@@ -12,3 +12,16 @@ services:
       - type: bind
         source: ./db/data
         target: /var/lib/mysql
+    networks:
+      - main
+  app:
+    image: rss-feed-app:latest
+    build: .
+    command: ["python", "-m", "pip", "freeze"]
+    restart: always
+    env_file: "env/app.env"
+    networks:
+      - main
+
+networks:
+  main:
