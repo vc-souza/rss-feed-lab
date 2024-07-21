@@ -1,0 +1,14 @@
+services:
+  db:
+    image: mysql:9.0.0
+    restart: always
+    env_file: "env/db.env"
+    ports:
+      - "9000:3306"
+    volumes:
+      - type: bind
+        source: ./db/init
+        target: /docker-entrypoint-initdb.d
+      - type: bind
+        source: ./db/data
+        target: /var/lib/mysql
