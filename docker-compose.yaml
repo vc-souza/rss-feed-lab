@@ -15,11 +15,12 @@ services:
       - main
   app:
     container_name: rss-feed-lab-app
-    image: rss-feed-app:latest
+    image: rss-feed-lab-app:latest
     build: .
-    command: ["python", "-m", "rss_feed_lab"]
     restart: always
     env_file: "env/app.env"
+    ports:
+      - "9001:9001"
     networks:
       - main
 
