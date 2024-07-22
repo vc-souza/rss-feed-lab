@@ -1,0 +1,28 @@
+services:
+  db:
+    container_name: rss-feed-lab-db
+    image: mysql:9.0.0
+    restart: always
+    env_file: "env/db.env"
+    volumes:
+      - type: bind
+        source: ./db/init
+        target: /docker-entrypoint-initdb.d
+      - type: bind
+        source: ./db/data
+        target: /var/lib/mysql
+    networks:
+      - main
+  app:
+    container_name: rss-feed-lab-app
+    image: rss-feed-lab-app:latest
+    build: .
+    restart: always
+    env_file: "env/app.env"
+    ports:
+      - "9001:9001"
+    networks:
+      - main
+
+networks:
+  main:
