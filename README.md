@@ -11,4 +11,3 @@ Experimenting with a couple of different technologies by building a simple RSS f
 | **(Python) AIOHTTP** | 3.9.5 |
 | **(Python) SQLAlchemy** | 2.0.31 |
 | **(Python) Tornado** | 6.4.1 |
-| **(Python) Beautiful Soup** | 4.8.1 |
